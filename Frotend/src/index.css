@@ -1,0 +1,81 @@
+/* Estilos específicos para a página de Login */
+.login-page {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Substitua pelo caminho da sua imagem de fundo */
+  background: url('./assets/imgs/images.avif') no-repeat center center fixed;
+  background-size: cover;
+}
+
+.login-container {
+  background: rgba(255, 255, 255, 0.15); /* Efeito de transparência */
+  backdrop-filter: blur(10px); /* Desfoque no fundo (vidro) */
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  color: white;
+}
+
+.login-container h2 {
+  margin-bottom: 30px;
+  font-size: 2rem;
+  color: #f1c40f; /* Amarelo banana */
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.input-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+  font-size: 1rem;
+}
+
+.btn-login {
+  width: 100%;
+  padding: 15px;
+  background: #f1c40f;
+  border: none;
+  border-radius: 8px;
+  color: #333;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.3s;
+}
+
+.btn-login:hover {
+  background: #d4ac0d;
+  transform: translateY(-2px);
+}
+
+.login-footer {
+  margin-top: 20px;
+  font-size: 0.9rem;
+}
+
+.login-footer a {
+  color: #f1c40f;
+  text-decoration: none;
+  font-weight: bold;
+}
