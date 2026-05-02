@@ -66,14 +66,14 @@ npm run dev
 
 ---
 
-## 📌 Funcionalidades (em desenvolvimento)
+## Funcionalidades Implementadas
+[x] Login: Autenticação de usuários cadastrados.
 
-* [ ] Tela de Login
-* [ ] Tela de Registro
-* [ ] Página Inicial
-* [ ] Integração com API
-* [ ] Validação de formulários
-* [ ] Autenticação
+[x] Cadastro (Register): Registro de novos usuários no banco de dados.
+
+[x] Home: Página principal acessível após o login.
+
+[x] Integração: Comunicação via Axios com o serviço de backend.
 
 ---
 
