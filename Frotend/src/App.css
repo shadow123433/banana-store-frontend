@@ -1,27 +1,55 @@
-/* Configurações Gerais */
-body {
+/* Importando uma fonte moderna */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+:root {
+  --primary: #f1c40f;    /* Amarelo Banana */
+  --secondary: #27ae60;  /* Verde Folha */
+  --dark: #2c3e50;
+  --light: #f9f9f9;
+  --shadow: 0 8px 30px rgba(0,0,0,0.1);
+}
+
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: #f4f7f6;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  /* Substitua pelo caminho da sua imagem de fundo */
+  background: linear-gradient(rgba(249, 249, 249, 0.85), rgba(249, 249, 249, 0.85)), 
+              url('./assets/imgs/imagesf.jpg'); 
+  background-attachment: fixed; /* O fundo fica parado enquanto você rola */
+  background-size: cover;
+  background-position: center;
+  color: var(--dark);
+  line-height: 1.6;
+  min-height: 100vh;
 }
 
 .container {
-  padding: 40px 20px;
   max-width: 1200px;
   margin: 0 auto;
+  padding: 40px 20px;
 }
 
+/* --- HEADER --- */
 header {
   text-align: center;
   margin-bottom: 50px;
 }
 
 header h1 {
-  color: #f39c12;
-  font-size: 2.5rem;
-  margin-bottom: 10px;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--dark);
+  text-transform: uppercase;
+  letter-spacing: -1px;
+}
+
+header h1 span {
+  color: var(--primary);
 }
 
 header p {
@@ -29,101 +57,121 @@ header p {
   font-size: 1.1rem;
 }
 
-/* Vitrine de Cards */
+/* --- VITRINE (GRID) --- */
 .vitrine {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 30px;
 }
 
+/* --- CARD DO PRODUTO --- */
 .card {
   background: white;
-  border-radius: 15px;
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--shadow);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 1px solid #eee;
+  border: 1px solid rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
 }
 
 .card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  transform: translateY(-10px);
+  box-shadow: 0 15px 45px rgba(0,0,0,0.15);
 }
 
 .card img {
   width: 100%;
-  height: 250px;
+  height: 220px;
   object-fit: cover;
-  border-bottom: 3px solid #f1c40f;
+  transition: transform 0.5s ease;
+}
+
+.card:hover img {
+  transform: scale(1.05);
 }
 
 .card-info {
   padding: 25px;
-  text-align: center;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .card-info h3 {
-  margin: 0;
-  color: #2c3e50;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  color: var(--dark);
 }
 
 .preco {
-  color: #27ae60;
-  font-weight: bold;
-  font-size: 1.3rem;
-  margin: 10px 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--secondary);
+  margin-bottom: 20px;
 }
 
-/* Controle de Quantidade */
+/* --- CONTROLE DE QUANTIDADE --- */
 .controle-quantidade {
-  margin: 20px 0;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 15px;
+  background: #f1f1f1;
+  padding: 5px 15px;
+  border-radius: 50px;
+  margin-bottom: 20px;
+  width: fit-content;
 }
 
 .controle-quantidade label {
+  font-size: 0.8rem;
   font-weight: 600;
-  color: #34495e;
+  margin-right: 10px;
+  text-transform: uppercase;
 }
 
 .controle-quantidade input {
-  width: 70px;
-  padding: 8px;
-  border-radius: 8px;
-  border: 2px solid #ecf0f1;
-  text-align: center;
+  border: none;
+  background: transparent;
+  width: 40px;
   font-size: 1rem;
-  transition: border-color 0.3s;
-}
-
-.controle-quantidade input:focus {
-  border-color: #f1c40f;
+  font-weight: 700;
+  text-align: center;
   outline: none;
 }
 
-/* Botão de Compra */
+/* --- BOTÃO DE PEDIDO --- */
 .btn-pedido {
-  background: #f1c40f;
-  color: #fff;
+  background: var(--dark);
+  color: white;
   border: none;
-  padding: 15px 25px;
-  border-radius: 50px;
-  font-weight: bold;
+  padding: 15px;
+  border-radius: 12px;
+  font-weight: 600;
   font-size: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
   cursor: pointer;
-  width: 100%;
-  transition: background 0.3s, transform 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: background 0.3s ease;
 }
 
 .btn-pedido:hover {
-  background: #d4ac0d;
+  background: #000;
 }
 
-.btn-pedido:active {
-  transform: scale(0.98);
+.btn-pedido svg {
+  width: 20px;
+}
+
+/* Responsividade para telas pequenas */
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 2rem;
+  }
+  .container {
+    padding: 20px;
+  }
 }

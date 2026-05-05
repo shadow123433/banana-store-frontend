@@ -4,7 +4,6 @@ import { useNavigate, Link } from 'react-router-dom';
 import api from '../services/api'; 
 
 export default function Login() {
-  // Login só precisa de Email e Senha
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState(''); 
   const navigate = useNavigate();
@@ -13,23 +12,31 @@ export default function Login() {
     event.preventDefault();
 
     try {
-      // 1. Chamada para a rota de LOGIN que criamos no backend
+      // 1. Chamada para a rota de LOGIN no seu backend
+      // O backend retorna: { message, user: {id, nome}, token }
       const response = await api.post('/Auth/Login', { email, senha });
       
       console.log('Login bem-sucedido!', response.data);
 
-      // 2. Salva o nome do Thiago (ou do usuário) para usar na Home
+      // --- AS SALVAÇÕES NO STORAGE ---
+      // 2. Salva o TOKEN (Isso resolve o erro 401!)
+      localStorage.setItem('token', response.data.token);
+
+      // 3. Salva o nome do usuário para exibir na interface
       localStorage.setItem('usuarioNome', response.data.user.nome);
 
       alert(`Bem-vindo, ${response.data.user.nome}! 🍌`);
       
-      // 3. Redireciona para a Home
-      navigate('/home'); 
+      // 4. Redireciona para a Home
+      // replace: true impede que o usuário volte para o login ao clicar em "voltar"
+      navigate('/home', { replace: true });
 
     } catch (error) {
       console.error('Erro ao logar:', error);
-      // Aqui tratamos se a senha estiver errada ou e-mail não existir
-      alert(error.response?.data?.message || 'Erro ao fazer login. Verifique suas credenciais.');
+      
+      // Pega a mensagem de erro que você definiu no Authcontroller.js
+      const mensagemErro = error.response?.data?.message || 'Erro ao fazer login.';
+      alert(mensagemErro);
     }
   }
 

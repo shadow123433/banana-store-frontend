@@ -1,7 +1,9 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import Login from './pages/login';    // Verifique se o arquivo é 'login.jsx' ou 'Login.jsx'
 import Register from './pages/Register';
 import Home from './pages/home';      // Verifique se o arquivo é 'home.jsx' ou 'Home.jsx'
+import Form from './pages/Form'; 
 
 function App() {
   return (
@@ -11,6 +13,7 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/Form" element={<Form />} />
       </Routes>
     </BrowserRouter>
   );

@@ -3,6 +3,7 @@ import '../index.css';
 import { useNavigate } from 'react-router-dom';
 import api from '../services/api'; 
 
+
 export default function Register() {
   const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
