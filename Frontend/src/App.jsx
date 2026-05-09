@@ -5,6 +5,7 @@ import Register from './pages/Register';
 import Home from './pages/home';      
 import Form from './pages/Form'; 
 import PedidosUsers from './pages/PedidosUsers'; 
+import NavBar from './pages/NavBar'; 
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/Form" element={<Form />} />
         <Route path="/PedidosUsers" element={<PedidosUsers />} />
+        <Route path="/NavBar" element={<NavBar />} />
       </Routes>
     </BrowserRouter>
   );

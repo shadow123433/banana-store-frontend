@@ -8,17 +8,19 @@ const PedidosUsers = () => {
 
   useEffect(() => {
     const carregarMeusPedidos = async () => {
-      try {
-        // Pega o token salvo no navegador
-        const token = localStorage.getItem('token'); 
+      const token = localStorage.getItem('token'); 
 
-        // Faz a requisição para a sua API de "Meus Pedidos"
+      if (!token) {
+        setCarregando(false);
+        return;
+      }
+
+      try {
         const response = await axios.get('http://localhost:3000/Auth/MeusPedidos', {
           headers: {
-            Authorization: `Bearer ${token}` // Aqui você apresenta o crachá!
+            Authorization: `Bearer ${token}`
           }
         });
-
         setPedidos(response.data);
       } catch (error) {
         console.error("Erro ao buscar pedidos:", error);
@@ -30,26 +32,53 @@ const PedidosUsers = () => {
     carregarMeusPedidos();
   }, []);
 
-  if (carregando) return <p>Carregando seu histórico...</p>;
+  if (carregando) return <div className="carregando">Carregando seu histórico...</div>;
 
- return (
-  <div className="seus-pedidos-container">
-    <h2>🛍️ Meus Pedidos</h2>
-    
-    {pedidos.length === 0 ? (
-      <p>Você ainda não realizou nenhum pedido.</p>
-    ) : (
-      pedidos.map((p) => (
-        <div key={p.id} className="card-pedido">
-          <h4>{p.item}</h4>
-          <p><strong>Qtd:</strong> {p.quantidade} unidades</p>
-          <span className="data-pedido">Realizado em: {new Date(p.createdAt).toLocaleDateString()}</span>
-          <div className="status-tag">✓ Confirmado</div>
+  return (
+    <div className="seus-pedidos-container">
+      <header className="pedidos-header">
+        <h2>🛍️ Meus Pedidos</h2>
+        <p>Acompanhe suas compras recentes</p>
+      </header>
+      
+      {pedidos.length === 0 ? (
+        <div className="sem-pedidos">
+          <p>Você ainda não realizou nenhum pedido.</p>
         </div>
-      ))
-    )}
-  </div>
-);
+      ) : (
+        <div className="lista-pedidos-grid">
+          {pedidos.map((p) => (
+            <div key={p.id} className="card-pedido">
+              <div className="card-top">
+                <span className="pedido-id">#ID: {p.id.toString().slice(-5)}</span>
+                <div className="status-tag">✓ Confirmado</div>
+              </div>
+
+              <div className="card-info-principal">
+                <h4>{p.item}</h4>
+                <p><strong>Quantidade:</strong> {p.quantidade} unidades</p>
+              </div>
+
+              <div className="entrega-box">
+                <h5>📍 Local de Entrega</h5>
+                <p><strong>Para:</strong> {p.nome}</p>
+                <p>{p.endereco}, {p.bairro}</p>
+                <p>{p.cidade} - {p.uf}</p>
+                {p.complemento && <p className="complemento">Obs: {p.complemento}</p>}
+                <p className="telefone">📞 {p.telefone}</p>
+              </div>
+
+              <footer className="card-footer">
+                <span className="data-pedido">
+                  Realizado em: {new Date(p.createdAt).toLocaleDateString('pt-BR')}
+                </span>
+              </footer>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
 };
 
 export default PedidosUsers;

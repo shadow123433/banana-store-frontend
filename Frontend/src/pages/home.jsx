@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import api from '../services/api';
-import Form from './Form'; 
-import PedidosUsers from './PedidosUsers'; 
-import '../App.css'
+import Form from './Form';
+import PedidosUsers from './PedidosUsers';
+import Navbar from './Navbar';
+import '../App.css';
 
 export default function Home() {
   const produtos = [
@@ -13,9 +14,7 @@ export default function Home() {
   const [quantidades, setQuantidades] = useState({ 1: 1, 2: 1 });
   const [mostrarForm, setMostrarForm] = useState(false);
   const [produtoSelecionado, setProdutoSelecionado] = useState(null);
-  
-  // --- NOVO ESTADO PARA OS PEDIDOS ---
-  const [mostrarPedidos, setMostrarPedidos] = useState(false); 
+  const [mostrarPedidos, setMostrarPedidos] = useState(false);
 
   const alterarQuantidade = (id, valor) => {
     setQuantidades({ ...quantidades, [id]: Math.max(1, valor) });
@@ -34,7 +33,7 @@ export default function Home() {
     const payload = {
       item: produtoSelecionado.nome,
       quantidade: quantidades[produtoSelecionado.id],
-      entrega: dadosEntrega 
+      entrega: dadosEntrega
     };
 
     try {
@@ -48,28 +47,23 @@ export default function Home() {
 
   return (
     <div className="container">
-      {/* BOTÃO DE MEUS PEDIDOS (No canto da tela) */}
-      <button 
-        className="btn-historico" 
-        onClick={() => setMostrarPedidos(true)}
-        style={{ position: 'absolute', top: '20px', right: '20px', padding: '10px' }}
-      >
-        🛍️ Meus Pedidos
-      </button>
+      <Navbar abrirPedidos={() => setMostrarPedidos(true)} />
 
-      {/* LÓGICA DO FORMULÁRIO */}
       {mostrarForm && (
-        <Form 
-          aoEnviar={finalizarCompra} 
-          aoCancelar={() => setMostrarForm(false)} 
+        <Form
+          aoEnviar={finalizarCompra}
+          aoCancelar={() => setMostrarForm(false)}
         />
       )}
 
-      {/* --- LÓGICA DA LISTA DE PEDIDOS --- */}
       {mostrarPedidos && (
-        <div className="modal-pedidos">
-          <button onClick={() => setMostrarPedidos(false)}>Fechar X</button>
-          <PedidosUsers />
+        <div className="modal-overlay" onClick={() => setMostrarPedidos(false)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="btn-fechar" onClick={() => setMostrarPedidos(false)}>
+              &times;
+            </button>
+            <PedidosUsers />
+          </div>
         </div>
       )}
 
@@ -85,12 +79,12 @@ export default function Home() {
             <div className="card-info">
               <h3>{banana.nome}</h3>
               <p className="preco">R$ {banana.preco.toFixed(2)} / cacho</p>
-              
+
               <div className="controle-quantidade">
                 <label>Qtd:</label>
-                <input 
-                  type="number" 
-                  value={quantidades[banana.id]} 
+                <input
+                  type="number"
+                  value={quantidades[banana.id]}
                   onChange={(e) => alterarQuantidade(banana.id, parseInt(e.target.value))}
                 />
               </div>
