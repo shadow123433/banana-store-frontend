@@ -16,32 +16,41 @@ Este repositório contém o **frontend** da aplicação, desenvolvido utilizando
 
 ---
 
-## 📁 Estrutura de Pastas
+## 📁 Estrutura do Projeto
 
-```
+```bash
 Frontend/
 ├── node_modules/
-├── public/
 ├── src/
 │   ├── assets/
 │   │   └── imgs/
+│   │       ├── images (1).jpg
+│   │       ├── images.avif
+│   │       ├── images.jpg
+│   │       └── imagesf.jpg
 │   ├── pages/
+│   │   ├── Form.jsx
 │   │   ├── home.jsx
 │   │   ├── login.jsx
+│   │   ├── NavBar.jsx
+│   │   ├── PedidosUsers.jsx
 │   │   └── Register.jsx
 │   ├── services/
 │   │   └── api.js
 │   ├── App.css
 │   ├── App.jsx
+│   ├── CardPedidos.css
+│   ├── form.css
 │   ├── index.css
-│   └── main.jsx
+│   ├── main.jsx
+│   └── NavBar.css
 ├── .gitignore
 ├── eslint.config.js
 ├── index.html
-├── package.json
 ├── package-lock.json
-├── README.md
-└── vite.config.js
+├── package.json
+├── vite.config.js
+└── README.md
 ```
 
 ---
