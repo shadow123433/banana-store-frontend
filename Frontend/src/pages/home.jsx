@@ -30,6 +30,9 @@ export default function Home() {
     const formData = new FormData(event.target);
     const dadosEntrega = Object.fromEntries(formData);
 
+    // 1. Pegar o token do localStorage
+    const token = localStorage.getItem('token'); 
+
     const payload = {
       item: produtoSelecionado.nome,
       quantidade: quantidades[produtoSelecionado.id],
@@ -37,11 +40,22 @@ export default function Home() {
     };
 
     try {
-      await api.post('/Pedidos', payload);
+      // 2. Enviar o token no cabeçalho (Authorization)
+      await api.post('/Pedidos', payload, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      
       alert(`✅ Pedido de ${payload.item} confirmado!`);
       setMostrarForm(false);
     } catch (error) {
-      alert("Erro ao enviar pedido.");
+      console.error(error);
+      if (error.response && error.response.status === 401) {
+        alert("Sua sessão expirou. Faça login novamente.");
+      } else {
+        alert("Erro ao enviar pedido.");
+      }
     }
   }
 
@@ -49,26 +63,31 @@ export default function Home() {
     <div className="container">
       <Navbar abrirPedidos={() => setMostrarPedidos(true)} />
 
+      {/* Modal de Formulário de Compra */}
       {mostrarForm && (
-        <Form
-          aoEnviar={finalizarCompra}
-          aoCancelar={() => setMostrarForm(false)}
-        />
+        <div className="modal-overlay" onClick={() => setMostrarForm(false)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="btn-fechar" onClick={() => setMostrarForm(false)}>X</button>
+            <Form
+              aoEnviar={finalizarCompra}
+              aoCancelar={() => setMostrarForm(false)}
+            />
+          </div>
+        </div>
       )}
 
+      {/* Modal de Histórico de Pedidos */}
       {mostrarPedidos && (
         <div className="modal-overlay" onClick={() => setMostrarPedidos(false)}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <button className="btn-fechar" onClick={() => setMostrarPedidos(false)}>
-              &times;
-            </button>
+            <button className="btn-fechar" onClick={() => setMostrarPedidos(false)}>X</button>
             <PedidosUsers />
           </div>
         </div>
       )}
 
       <header>
-        <h1>🍌 Banana Store</h1>
+        <h1>🍌 <span>Banana</span> Store</h1>
         <p>Qualidade premium para o seu carrinho</p>
       </header>
 

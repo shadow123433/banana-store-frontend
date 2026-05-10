@@ -15,9 +15,15 @@ export default function Form({ aoEnviar, aoCancelar }) {
 
                     <div className="campo">
                         <label>Endereço de Entrega</label>
-                        <input type="text" name="endereco" placeholder="Rua, número, apto..." required />
+                        <input type="text" name="endereco" placeholder="Rua" required />
                     </div>
 
+
+
+                    <div className="campo">
+                        <label>Número da casa</label>
+                        <input type="text" name="numero" placeholder="Número da casa..." required />
+                    </div>
 
 
                     <div className="campo">
@@ -31,7 +37,7 @@ export default function Form({ aoEnviar, aoCancelar }) {
                     </div>
 
                     <div className="campo">
-                        <label>Complemento (Opcional)</label>
+                        <label>Complemento</label>
                         <input type="text" name="complemento" placeholder="Apto, Bloco, Referência..." />
                     </div>
 
