@@ -22,7 +22,7 @@ export default function Form({ aoEnviar, aoCancelar }) {
 
                     <div className="campo">
                         <label>Número da casa</label>
-                        <input type="text" name="numero" placeholder="Número da casa..." required />
+                        <input type="number" name="numero" placeholder="Número da casa..." required />
                     </div>
 
 
