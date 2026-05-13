@@ -1,107 +1,132 @@
-# 🚀 Frontend - Projeto em Desenvolvimento
+# 💻 Frontend - Sistema de Pedidos
 
-Este repositório contém o **frontend** da aplicação, desenvolvido utilizando **React + Vite**, com foco em performance, organização e escalabilidade.
-
-> ⚠️ **Status:** Projeto ainda em desenvolvimento.
+Interface web desenvolvida com **React** para consumo da API de pedidos, permitindo autenticação de usuários e gerenciamento de pedidos em tempo real.
 
 ---
 
-## 🧠 Tecnologias Utilizadas
+## 🧠 Objetivo
 
-* React
-* Vite
-* JavaScript (ES6+)
-* CSS
-* ESLint
+Criar uma interface intuitiva para interação com a API, permitindo que usuários realizem login, cadastro e gerenciamento completo de pedidos.
+
+---
+
+## 🛠️ Tecnologias
+
+- React  
+- Vite  
+- JavaScript (ES6+)  
+- CSS  
 
 ---
 
 ## 📁 Estrutura do Projeto
 
-```bash
-Frontend/
-├── node_modules/
-├── src/
-│   ├── assets/
-│   │   └── imgs/
-│   │       ├── images (1).jpg
-│   │       ├── images.avif
-│   │       ├── images.jpg
-│   │       └── imagesf.jpg
-│   ├── pages/
-│   │   ├── Form.jsx
-│   │   ├── home.jsx
-│   │   ├── login.jsx
-│   │   ├── NavBar.jsx
-│   │   ├── PedidosUsers.jsx
-│   │   └── Register.jsx
-│   ├── services/
-│   │   └── api.js
-│   ├── App.css
-│   ├── App.jsx
-│   ├── CardPedidos.css
-│   ├── form.css
-│   ├── index.css
-│   ├── main.jsx
-│   └── NavBar.css
-├── .gitignore
-├── eslint.config.js
-├── index.html
-├── package-lock.json
-├── package.json
-├── vite.config.js
-└── README.md
+```
+src/
+ ├── assets/        # Imagens e recursos
+ ├── pages/         # Páginas da aplicação
+ │   ├── Home.jsx
+ │   ├── Login.jsx
+ │   ├── Register.jsx
+ │   ├── Form.jsx
+ │   ├── PedidosUsers.jsx
+ │   └── NavBar.jsx
+ ├── services/
+ │   └── api.js     # Comunicação com backend
+ ├── App.jsx
+ ├── main.jsx
 ```
 
 ---
 
-## 🔗 Integração com Backend
+## 🔐 Autenticação
 
-Este projeto funciona em conjunto com um backend que está em um repositório separado.
-
-> Em breve serão adicionadas instruções completas de integração.
+- Login gera token JWT  
+- Token é armazenado no frontend  
+- Requisições protegidas enviam o token automaticamente  
 
 ---
 
-## ▶️ Como Rodar o Projeto
+## 📡 Integração com API
 
+O frontend se comunica com o backend através de requisições HTTP utilizando um serviço centralizado (`api.js`).
+
+Exemplo de uso:
+
+```js
+api.get('/Pedidos', {
+  headers: {
+    Authorization: `Bearer ${token}`
+  }
+})
+```
+
+---
+
+## 🖥️ Funcionalidades
+
+- Cadastro de usuário  
+- Login com autenticação  
+- Criação de pedidos  
+- Listagem de pedidos do usuário  
+- Cancelamento de pedidos  
+- Navegação entre páginas  
+
+---
+
+## ⚙️ Como rodar o projeto
+
+### 1. Clonar repositório
 ```bash
-# Instalar dependências
-npm install
+git clone https://github.com/shadow123433/banana-store-frontend.git
+```
 
-# Rodar ambiente de desenvolvimento
+### 1. Instalar dependências
+```bash
+npm install
+```
+
+### 2. Rodar aplicação
+```bash
 npm run dev
 ```
 
----
-
-## Funcionalidades Implementadas
-[x] Login: Autenticação de usuários cadastrados.
-
-[x] Cadastro (Register): Registro de novos usuários no banco de dados.
-
-[x] Home: Página principal acessível após o login.
-
-[x] Integração: Comunicação via Axios com o serviço de backend.
+Aplicação disponível em:
+```
+http://localhost:5173
+```
 
 ---
 
-## 🛠️ Boas Práticas Aplicadas
+## 🔗 Conexão com Backend
 
-* Organização por pastas (pages, services, assets)
-* Separação de responsabilidades
-* Uso de ESLint para padronização de código
+Certifique-se de que o backend esteja rodando em:
 
----
-
-## 📄 Observações
-
-Este projeto ainda está em fase inicial, podendo sofrer alterações na estrutura, funcionalidades e tecnologias utilizadas.
+```
+http://localhost:3000
+```
 
 ---
 
-## 👨‍💻 Autor
+## 🧠 Organização
 
-Desenvolvido por **Thiago Martins**
+- **Pages** → telas da aplicação  
+- **Services** → comunicação com API  
+- **Components** → elementos reutilizáveis  
+- **Assets** → recursos visuais  
 
 ---
+
+## 📌 Melhorias Futuras
+
+- Implementar proteção de rotas  
+- Gerenciamento de estado global (Context API ou Zustand)  
+- Feedback visual (loading, erros)  
+- Responsividade completa  
+- Melhor organização de estilos  
+
+---
+
+## 📄 Licença
+
+MIT
