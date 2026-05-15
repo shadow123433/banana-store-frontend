@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Navigate } from 'react-router-dom';
-import Login from './pages/login';    
+import Login from './pages/Login';    
 import Register from './pages/Register';
-import Home from './pages/home';      
+import Home from './pages/Home';      
 import Form from './pages/Form'; 
 import PedidosUsers from './pages/PedidosUsers'; 
 import NavBar from './pages/NavBar'; 
@@ -12,9 +12,9 @@ function App() {
     <BrowserRouter>
       <Routes>
         {/* SEMPRE use letra inicial MAIÚSCULA nos componentes */}
-        <Route path="/" element={<login />} />
+        <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/home" element={<home />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/Form" element={<Form />} />
         <Route path="/PedidosUsers" element={<PedidosUsers />} />
         <Route path="/NavBar" element={<NavBar />} />
