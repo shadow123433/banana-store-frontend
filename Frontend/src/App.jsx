@@ -12,9 +12,9 @@ function App() {
     <BrowserRouter>
       <Routes>
         {/* SEMPRE use letra inicial MAIÚSCULA nos componentes */}
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/home" element={<Home />} />
+        <Route path="/home" element={<home />} />
         <Route path="/Form" element={<Form />} />
         <Route path="/PedidosUsers" element={<PedidosUsers />} />
         <Route path="/NavBar" element={<NavBar />} />
