@@ -1,21 +1,70 @@
-# 💻 Frontend - Sistema de Pedidos
+# 💻 Sistema de Pedidos - Frontend
 
-Interface web desenvolvida com **React** para consumo da API de pedidos, permitindo autenticação de usuários e gerenciamento de pedidos em tempo real.
-
----
-
-## 🧠 Objetivo
-
-Criar uma interface intuitiva para interação com a API, permitindo que usuários realizem login, cadastro e gerenciamento completo de pedidos.
+Interface web desenvolvida em **React** para consumo de uma API REST, com autenticação JWT e gerenciamento completo de pedidos.
 
 ---
 
-## 🛠️ Tecnologias
+## 🚀 Acesse o Projeto
 
-- React  
-- Vite  
-- JavaScript (ES6+)  
-- CSS  
+👉 https://banana-store-frontend.vercel.app
+
+---
+
+## 🧠 Visão Geral
+
+Este projeto faz parte de uma arquitetura **full stack desacoplada**, onde:
+
+- 🔹 Frontend: React (Vercel)
+- 🔹 Backend: Node.js (Render)
+- 🔹 Banco de Dados: MongoDB
+
+A aplicação simula um sistema real de pedidos, com fluxo completo de autenticação e operações do usuário.
+
+---
+
+## ⚙️ Funcionalidades
+
+- ✔️ Cadastro de usuário  
+- ✔️ Login com autenticação JWT  
+- ✔️ Persistência de sessão (localStorage)  
+- ✔️ Criação de pedidos  
+- ✔️ Listagem de pedidos do usuário  
+- ✔️ Cancelamento de pedidos  
+- ✔️ Navegação entre páginas  
+
+---
+
+## 🔐 Autenticação
+
+- O login gera um **token JWT**
+- O token é armazenado no navegador
+- Requisições autenticadas enviam automaticamente o token via **Axios Interceptor**
+
+---
+
+## 📡 Integração com API
+
+A comunicação com o backend é feita através de um serviço centralizado:
+
+```js
+src/services/api.js
+```
+
+Exemplo:
+
+```js
+api.get('/Pedidos');
+```
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+- **React**
+- **Vite**
+- **JavaScript (ES6+)**
+- **Axios**
+- **CSS**
 
 ---
 
@@ -23,8 +72,8 @@ Criar uma interface intuitiva para interação com a API, permitindo que usuári
 
 ```
 src/
- ├── assets/        # Imagens e recursos
- ├── pages/         # Páginas da aplicação
+ ├── assets/          
+ ├── pages/           
  │   ├── Home.jsx
  │   ├── Login.jsx
  │   ├── Register.jsx
@@ -32,101 +81,67 @@ src/
  │   ├── PedidosUsers.jsx
  │   └── NavBar.jsx
  ├── services/
- │   └── api.js     # Comunicação com backend
+ │   └── api.js       
  ├── App.jsx
  ├── main.jsx
 ```
 
 ---
 
-## 🔐 Autenticação
+## ⚙️ Como rodar localmente
 
-- Login gera token JWT  
-- Token é armazenado no frontend  
-- Requisições protegidas enviam o token automaticamente  
-
----
-
-## 📡 Integração com API
-
-O frontend se comunica com o backend através de requisições HTTP utilizando um serviço centralizado (`api.js`).
-
-Exemplo de uso:
-
-```js
-api.get('/Pedidos', {
-  headers: {
-    Authorization: `Bearer ${token}`
-  }
-})
-```
-
----
-
-## 🖥️ Funcionalidades
-
-- Cadastro de usuário  
-- Login com autenticação  
-- Criação de pedidos  
-- Listagem de pedidos do usuário  
-- Cancelamento de pedidos  
-- Navegação entre páginas  
-
----
-
-## ⚙️ Como rodar o projeto
-
-### 1. Clonar repositório
 ```bash
 git clone https://github.com/shadow123433/banana-store-frontend.git
-```
-
-### 1. Instalar dependências
-```bash
+cd banana-store-frontend
 npm install
-```
-
-### 2. Rodar aplicação
-```bash
 npm run dev
 ```
 
-Aplicação disponível em:
+A aplicação estará disponível em:
+
 ```
 http://localhost:5173
 ```
 
 ---
 
-## 🔗 Conexão com Backend
+## 🔗 Configuração da API
 
-Certifique-se de que o backend esteja rodando em:
+Crie um arquivo `.env` na raiz do projeto:
 
 ```
-http://localhost:3000
+VITE_API_URL=http://localhost:3000
 ```
+
+Ou utilize a API em produção.
 
 ---
 
-## 🧠 Organização
+## 🌐 Deploy
 
-- **Pages** → telas da aplicação  
-- **Services** → comunicação com API  
-- **Components** → elementos reutilizáveis  
-- **Assets** → recursos visuais  
+- **Frontend:** Vercel  
+- **Backend:** Render  
+
+👉 Aplicação em produção com comunicação real entre frontend e backend.
 
 ---
 
 ## 📌 Melhorias Futuras
 
-- Implementar proteção de rotas  
-- Gerenciamento de estado global (Context API ou Zustand)  
-- Feedback visual (loading, erros)  
-- Responsividade completa  
-- Melhor organização de estilos  
+- Proteção de rotas (Auth Guard)
+- Gerenciamento de estado global (Context API ou Zustand)
+- Feedback visual (loading e tratamento de erros)
+- Responsividade completa
+- Melhorias de UX/UI
 
 ---
 
 ## 📄 Licença
 
 MIT
+
+---
+
+## 👨‍💻 Autor: Thiago Martins
+
+Desenvolvido como projeto de estudo com foco em arquitetura full stack, integração de serviços e deploy em produção.
