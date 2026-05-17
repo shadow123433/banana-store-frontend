@@ -2,7 +2,7 @@ import { useState } from 'react';
 import api from '../services/api';
 import Form from './Form';
 import PedidosUsers from './PedidosUsers';
-import Navbar from './Navbar';
+import Navbar from './NavBar';
 import '../App.css';
 
 export default function Home() {
