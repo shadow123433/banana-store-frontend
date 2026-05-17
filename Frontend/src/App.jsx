@@ -11,6 +11,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/" element={<Navigate to="/Login" />} />
         {/* SEMPRE use letra inicial MAIÚSCULA nos componentes */}
         <Route path="/Login" element={<Login />} />
         <Route path="/Register" element={<Register />} />
