@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import '../index.css';
 import { useNavigate } from 'react-router-dom';
-import api from '../services/api'; 
+import api from '../services/api';
 
 
 export default function Register() {
   const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
-  const [senha, setSenha] = useState(''); 
+  const [senha, setSenha] = useState('');
   const navigate = useNavigate();
 
   async function handleSubmit(event) {
@@ -16,10 +16,15 @@ export default function Register() {
     try {
       // O endpoint precisa ser exatamente o que definimos no backend
       const response = await api.post('/Auth/Register', { nome, email, senha });
-      
-      console.log('Sucesso!', response.data);
-      alert('Cadastro realizado com sucesso! 🍌');
-      navigate('/home'); 
+
+      // faz login automaticamente após cadastro
+      const login = await api.post('/Auth/Login', { email, senha });
+
+      localStorage.setItem('token', login.data.token);
+      localStorage.setItem('user', JSON.stringify(login.data.user));
+
+      alert('Cadastro realizado e login efetuado com sucesso! 🍌');
+      navigate('/home');
 
     } catch (error) {
       console.error('Erro ao conectar:', error);
@@ -32,38 +37,38 @@ export default function Register() {
     <div className="login-page">
       <div className="login-container">
         <h2>🍌 Cadastro Banana</h2>
-        
+
         <form onSubmit={handleSubmit}>
           <div className="input-group">
             <label>Nome:</label>
-            <input 
-              type="text" 
+            <input
+              type="text"
               placeholder="Seu nome completo"
               value={nome}
               onChange={(e) => setNome(e.target.value)}
-              required 
+              required
             />
           </div>
 
           <div className="input-group">
             <label>E-mail:</label>
-            <input 
-              type="email" 
+            <input
+              type="email"
               placeholder="exemplo@email.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              required 
+              required
             />
           </div>
 
           <div className="input-group">
             <label>Senha:</label>
-            <input 
-              type="password" 
+            <input
+              type="password"
               placeholder="Sua senha"
               value={senha}
               onChange={(e) => setSenha(e.target.value)}
-              required 
+              required
             />
           </div>
 
