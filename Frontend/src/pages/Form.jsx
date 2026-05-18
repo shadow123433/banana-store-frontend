@@ -1,58 +1,17 @@
 import React from 'react';
-import '../form.css'; 
+import '../form.css';
 
 export default function Form({ aoEnviar, aoCancelar }) {
-    return (
-        <div className="modal-overlay">
-            <div className="modal-content">
-                <h2>🚚 Detalhes da Entrega</h2>
+  return (
+    <div className="form-card">
+      <h2>Endereço de entrega</h2>
 
-                <form onSubmit={aoEnviar} className="formulario-pedido-banana">
-                    <div className="campo">
-                        <label>Nome Completo</label>
-                        <input type="text" name="nome" placeholder="Quem recebe?" required />
-                    </div>
-
-                    <div className="campo">
-                        <label>Endereço de Entrega</label>
-                        <input type="text" name="endereco" placeholder="Rua" required />
-                    </div>
-
-
-
-                    <div className="campo">
-                        <label>Número da casa</label>
-                        <input type="number" name="numero" placeholder="Número da casa..." required />
-                    </div>
-
-
-                    <div className="campo">
-                        <label>Cidade</label>
-                        <input type="text" name="cidade" placeholder="Ex: São Paulo" required />
-                    </div>
-
-                    <div className="campo">
-                        <label>Bairro</label>
-                        <input type="text" name="bairro" placeholder="Ex: Jardim das Oliveiras" required />
-                    </div>
-
-                    <div className="campo">
-                        <label>Complemento</label>
-                        <input type="text" name="complemento" placeholder="Apto, Bloco, Referência..." />
-                    </div>
-
-
-
-                    <div className="campo">
-                        <label>Telefone para contato</label>
-                        <input type="number" name="telefone" placeholder="(00) 00000-0000" required />
-                    </div>
-
-
-                    <div className="campo">
-                        <label>UF (Estado)</label>
-                        <select name="uf" required defaultValue="">
-                            <option value="" disabled>Selecione</option>
+      <form onSubmit={aoEnviar} className="form-body">
+        <div className="row">
+          <input type="text" name="cep" placeholder="CEP" className="flex-2" required />
+          <select name="uf" className="flex-1" required defaultValue="">
+            <option value="" disabled>UF</option>
+            <option value="" disabled>Selecione</option>
                             <option value="AC">AC - Acre</option>
                             <option value="AL">AL - Alagoas</option>
                             <option value="AP">AP - Amapá</option>
@@ -80,17 +39,34 @@ export default function Form({ aoEnviar, aoCancelar }) {
                             <option value="SP">SP - São Paulo</option>
                             <option value="SE">SE - Sergipe</option>
                             <option value="TO">TO - Tocantins</option>
-                        </select>
-                    </div>
 
-
-
-                    <div className="botoes-form">
-                        <button type="submit" className="btn-confirmar">Finalizar Pedido</button>
-                        <button type="button" onClick={aoCancelar} className="btn-cancelar">Voltar</button>
-                    </div>
-                </form>
-            </div>
+            {/* ... outras UFs ... */}
+          </select>
         </div>
-    );
+
+        <input type="text" name="endereco" placeholder="Endereço" required />
+
+        <div className="row">
+          <input type="text" name="bairro" placeholder="Bairro" required />
+          <input type="text" name="cidade" placeholder="Cidade" required />
+        </div>
+
+        <div className="row">
+          <input type="number" name="numero" placeholder="Número" className="flex-1" required />
+          <div className="flex-1"></div> {/* Spacer para manter o visual da imagem */}
+        </div>
+
+        <input type="text" name="complemento" placeholder="Complemento" />
+
+        <div className="actions">
+          <button type="button" onClick={aoCancelar} className="btn-secondary">
+            Cancelar
+          </button>
+          <button type="submit" className="btn-primary">
+            Confirmar Pedido
+          </button>
+        </div>
+      </form>
+    </div>
+  );
 }

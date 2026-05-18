@@ -1,109 +1,94 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
-
-.formulario-pedido-banana {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px 15px;
+/* Tira a largura exagerada */
+.form-card {
   width: 100%;
-  margin-top: 10px;
+  max-width: 420px; /* Tamanho ideal para não parecer "esparramado" */
+  margin: 0 auto;
+  padding: 10px;
+  background: #fff;
 }
 
-/* Campos full width */
-.formulario-pedido-banana .campo:nth-child(1), 
-.formulario-pedido-banana .campo:nth-child(2),
-.formulario-pedido-banana .campo:nth-child(7),
-.botoes-form {
-  grid-column: span 2;
+.form-card h2 {
+  font-family: 'serif'; /* Ou Playfair Display */
+  font-size: 1.8rem;
+  color: #2d3436;
+  margin-bottom: 25px;
+  text-align: center;
 }
 
-.campo {
+.form-body {
   display: flex;
   flex-direction: column;
+  gap: 12px; /* Espaçamento menor entre linhas */
 }
 
-.campo label {
-  margin-bottom: 4px;
-  font-weight: 600;
-  color: #7f8c8d;
-  font-size: 0.7rem;
-  text-transform: uppercase;
-}
-
-.campo input,
-.campo select {
-  width: 100%;
-  height: 42px;
-  padding: 0 12px;
-  border: 2px solid #eee;
-  border-radius: 10px;
-  font-size: 0.95rem;
-  background-color: #fdfdfd;
-  outline: none;
-  transition: border-color 0.2s;
-  box-sizing: border-box;
-}
-
-.campo input:focus {
-  border-color: #f1c40f;
-}
-
-/* Responsivo */
-@media (max-width: 500px) {
-  .formulario-pedido-banana {
-    grid-template-columns: 1fr;
-  }
-  
-  .formulario-pedido-banana .campo {
-    grid-column: span 1 !important;
-  }
-}
-
-/* 🔥 SEÇÃO DE BOTÕES - ALINHAMENTO ABSOLUTO */
-.botoes-form {
-  grid-column: span 2;
-  display: flex !important;
-  flex-direction: row !important; /* Força um ao lado do outro */
-  align-items: stretch !important; /* Força os dois a terem a mesma altura */
+.row {
+  display: flex;
   gap: 12px;
-  width: 100%;
+}
+
+/* Proporções do Flex */
+.flex-1 { flex: 1; }
+.flex-2 { flex: 2; }
+
+.form-body input,
+.form-body select {
+  height: 48px;
+  padding: 0 15px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  background-color: #fff;
+  color: #4a5568;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.form-body input:focus {
+  border-color: #ff6b81;
+  box-shadow: 0 0 0 3px rgba(255, 107, 129, 0.1);
+}
+
+/* Botões pequenos e elegantes */
+.actions {
+  display: flex;
+  gap: 12px;
   margin-top: 15px;
 }
 
-.botoes-form button {
-  /* Reset total */
-  appearance: none;
-  -webkit-appearance: none;
-  border: none !important;
-  outline: none !important;
-  box-shadow: none !important; /* Remove sombras que dão ilusão de estar torto */
-  
-  /* Alinhamento */
-  flex: 1; /* Divide o espaço 50/50 */
+.btn-secondary {
+  flex: 1;
   height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  
-  /* Estilo */
+  background: #f1f5f9;
+  border: none;
   border-radius: 12px;
-  font-weight: 700;
-  font-size: 0.9rem;
+  color: #475569;
+  font-weight: 600;
   cursor: pointer;
-  text-transform: uppercase;
-  color: white !important;
-  margin: 0 !important; /* Remove margens que entortam */
 }
 
-/* 🔥 CORES REAIS */
-.btn-confirmar {
-  background-color: #27ae60 !important;
+.btn-primary {
+  flex: 1.5; /* Confirmar ligeiramente maior */
+  height: 48px;
+  background: #ff6b81;
+  border: none;
+  border-radius: 12px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(255, 107, 129, 0.2);
 }
 
-.btn-cancelar {
-  background-color: #e53935 !important;
+.btn-primary:hover {
+  background: #ff526a;
+  transform: translateY(-1px);
 }
 
-/* Efeito de clique simples */
-.botoes-form button:active {
-  transform: scale(0.98);
+/* Ajuste Mobile */
+@media (max-width: 400px) {
+  .form-card {
+    padding: 5px;
+  }
+  .row {
+    flex-direction: row; /* Mantém o CEP e UF na mesma linha mesmo no mobile */
+  }
 }

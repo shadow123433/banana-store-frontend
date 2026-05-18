@@ -1,287 +1,167 @@
-/* Importando uma fonte moderna */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
 
 :root {
-  --primary: #f1c40f;    /* Amarelo Banana */
-  --secondary: #27ae60;  /* Verde Folha */
-  --dark: #2c3e50;
-  --light: #f9f9f9;
-  --shadow: 0 8px 30px rgba(0,0,0,0.1);
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  --primary: #FFD700;
+  --secondary: #1a1a1a;
+  --bg-body: #f8f9fa;
+  --white: #ffffff;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(rgba(249, 249, 249, 0.85), rgba(249, 249, 249, 0.85)), 
-              url('./assets/imgs/imagesf.jpg'); 
-  background-attachment: fixed;
-  background-size: cover;
-  background-position: center;
-  color: var(--dark);
-  line-height: 1.6;
-  min-height: 100vh;
-  /* Evita que o site balance para os lados no celular */
-  overflow-x: hidden; 
-  width: 100%;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: var(--bg-body);
+  margin: 0;
 }
 
-/* --- CONTAINER --- */
 .container {
-  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px; /* Padding padrão menor para mobile */
+  padding: 2rem;
 }
 
 /* --- HEADER --- */
 header {
   text-align: center;
-  margin-bottom: 30px;
-  padding: 0 10px;
+  margin: 3rem 0;
 }
 
 header h1 {
-  /* clamp faz a fonte diminuir no celular e crescer no PC automaticamente */
-  font-size: clamp(1.8rem, 8vw, 3rem); 
-  font-weight: 700;
-  color: var(--dark);
-  text-transform: uppercase;
-  letter-spacing: -1px;
-  line-height: 1.2;
+  font-size: clamp(2rem, 8vw, 3.5rem);
+  font-weight: 800;
+  color: var(--secondary);
 }
 
-header h1 span {
-  color: var(--primary);
-}
+header h1 span { color: var(--primary); }
 
-header p {
-  color: #7f8c8d;
-  font-size: clamp(0.9rem, 4vw, 1.1rem);
-  margin-top: 5px;
-}
-
-/* --- VITRINE (GRID) --- */
+/* --- VITRINE --- */
 .vitrine {
   display: grid;
-  /* Ajuste inteligente: no mobile vira 1 coluna, no PC distribui */
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
+  gap: 2rem;
 }
 
-/* --- CARD DO PRODUTO --- */
 .card {
-  background: white;
+  background: var(--white);
   border-radius: 20px;
   overflow: hidden;
   box-shadow: var(--shadow);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 1px solid rgba(0,0,0,0.05);
-  display: flex;
-  flex-direction: column;
-  width: 100%;
+  transition: var(--transition);
 }
 
-/* Hover apenas para dispositivos que possuem mouse */
-@media (hover: hover) {
-  .card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 45px rgba(0,0,0,0.15);
-  }
-  .card:hover img {
-    transform: scale(1.05);
-  }
-}
+.card:hover { transform: translateY(-8px); }
 
 .card img {
   width: 100%;
-  height: 200px; /* Altura fixa melhorada */
+  height: 220px;
   object-fit: cover;
-  transition: transform 0.5s ease;
 }
 
-.card-info {
-  padding: 20px;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.card-info h3 {
-  font-size: 1.3rem;
-  margin-bottom: 8px;
-  color: var(--dark);
-}
+.card-info { padding: 1.5rem; }
 
 .preco {
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   font-weight: 700;
-  color: var(--secondary);
-  margin-bottom: 15px;
+  margin: 1rem 0;
 }
 
-/* --- CONTROLE DE QUANTIDADE --- */
+/* --- CONTROLES ESPECÍFICOS DA VITRINE --- */
 .controle-quantidade {
   display: flex;
   align-items: center;
-  background: #f1f1f1;
-  padding: 8px 15px;
-  border-radius: 50px;
-  margin-bottom: 15px;
-  width: fit-content;
-}
-
-.controle-quantidade label {
-  font-size: 0.75rem;
-  font-weight: 600;
-  margin-right: 10px;
-  text-transform: uppercase;
-}
-
-.controle-quantidade input {
-  border: none;
-  background: transparent;
-  width: 45px;
-  font-size: 1rem;
-  font-weight: 700;
-  text-align: center;
-  outline: none;
-}
-
-/* --- BOTÃO DE PEDIDO --- */
-.btn-pedido {
-  background: var(--dark);
-  color: white;
-  border: none;
-  padding: 14px;
-  border-radius: 12px;
-  font-weight: 600;
-  font-size: 1rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   gap: 10px;
-  transition: background 0.3s ease;
-  width: 100%; /* Botão largo para facilitar o toque no celular */
+  margin-bottom: 1rem;
 }
 
-.btn-pedido:active {
-  background: #000;
-  transform: scale(0.98);
+.vitrine input[type="number"] {
+  width: 60px;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  text-align: center;
 }
 
-/* --- ESTILO DO MODAL (Adaptado para Mobile) --- */
+.btn-pedido {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  background: var(--secondary);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-pedido:hover { background: var(--primary); color: var(--secondary); }
+
+/* --- MODAIS (CORREÇÃO DE LARGURA) --- */
 .modal-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.7);
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.75); /* Fundo um pouco mais escuro para foco */
+  backdrop-filter: blur(5px);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 9999;
-  backdrop-filter: blur(4px);
-  padding: 15px; /* Margem para não grudar na tela do celular */
+  padding: 20px; /* Evita que o modal encoste na borda da tela no mobile */
 }
 
 .modal-content {
-  background-color: white !important; /* Garante que o fundo seja branco */
-  display: block !important;         /* Garante que o conteúdo apareça */
-  width: 100%;
-  max-width: 500px;
-  border-radius: 20px;
-  padding: 30px;
+  background: white;
+  border-radius: 24px;
   position: relative;
-  max-height: 85vh;
+  
+  /* AJUSTE CRÍTICO DE LARGURA */
+  width: 100%; 
+  max-width: 450px; /* Garante que o formulário fique pequeno e centralizado */
+  
+  max-height: 95vh;
   overflow-y: auto;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-  z-index: 10000; /* Um nível acima do overlay */
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  animation: modalShow 0.3s ease-out;
 }
 
-/* --- O BOTÃO "X" QUE ACOMPANHA O SCROLL --- */
+/* Botão de fechar igual ao seu print (X vermelho) */
 .btn-fechar {
-  /* position: sticky faz ele "grudar" no topo da área visível do modal */
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0; 
-  float: right; /* Alinha à direita */
-  
-  /* Cor Vermelha Forçada */
-  background-color: #ff4d4d !important;
-  color: white !important;
-  
-  width: 38px;
-  height: 38px;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 100;
+  background: #ff4757; /* Vermelho vibrante */
+  color: white;
   border: none;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
-  font-weight: bold;
-  font-size: 1.5rem;
   cursor: pointer;
-  z-index: 1000; /* Garante que fique acima dos cards de pedido */
-
+  font-weight: bold;
   display: flex;
-  justify-content: center;
   align-items: center;
-
-  /* Truque: margem negativa evita que o botão empurre o conteúdo para baixo */
-  margin-bottom: -38px; 
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  justify-content: center;
+  font-size: 14px;
+  transition: transform 0.2s;
 }
 
-/* --- RESPONSIVIDADE DA VITRINE --- */
-.vitrine {
-  display: grid;
-  /* Cria colunas automáticas: 1 por linha no celular, várias no PC */
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
+.btn-fechar:hover {
+  transform: scale(1.1);
+  background: #ff6b81;
 }
 
-/* Ajustes para telas menores que 600px */
-@media (max-width: 600px) {
-  header h1 {
-    font-size: 1.8rem;
-  }
-  .container {
-    padding: 10px;
-  }
-  .card img {
-    height: 180px; /* Reduz a imagem no celular para caber mais coisa */
-  }
+/* Animação suave para o modal aparecer */
+@keyframes modalShow {
+  from { opacity: 0; transform: translateY(20px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-/* --- MEDIA QUERIES ESPECÍFICAS --- */
-
-/* Celulares Médios/Grandes (Tablets e etc) */
-@media (min-width: 601px) {
-  .container {
-    padding: 40px 20px;
-  }
-  header {
-    margin-bottom: 50px;
-  }
-  .btn-pedido {
-    width: auto; /* No PC o botão não precisa ser 100% */
-    padding-inline: 30px;
-  }
-}
-
-/* Celulares muito pequenos (iPhone SE / etc) */
-@media (max-width: 350px) {
-  .vitrine {
-    grid-template-columns: 1fr; /* Força uma coluna */
-  }
-  .card-info {
-    padding: 15px;
-  }
-  header h1 {
-    font-size: 1.6rem;
-  }
+/* --- FEEDBACK TOAST --- */
+.feedback-toast {
+  background: var(--secondary);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  border-bottom: 4px solid var(--primary);
+  text-align: center;
 }

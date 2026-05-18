@@ -8,6 +8,7 @@ export default function Register() {
   const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
+  const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
 
   async function handleSubmit(event) {
@@ -23,8 +24,11 @@ export default function Register() {
       localStorage.setItem('token', login.data.token);
       localStorage.setItem('user', JSON.stringify(login.data.user));
 
-      alert('Cadastro realizado e login efetuado com sucesso! 🍌');
-      navigate('/home');
+      setShowModal(true);
+
+      setTimeout(() => {
+        navigate('/home');
+      }, 2000);
 
     } catch (error) {
       console.error('Erro ao conectar:', error);
@@ -81,6 +85,16 @@ export default function Register() {
           <p>Já tem uma conta? <a href="/">Faça Login</a></p>
         </div>
       </div>
+
+      {/* 🔥 MODAL (ADICIONADO SEM MEXER NO RESTO) */}
+      {showModal && (
+        <div className="modal-overlay">
+          <div className="modal-box">
+            <h3>Sucesso 🍌</h3>
+            <p>Cadastro realizado e login efetuado!</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

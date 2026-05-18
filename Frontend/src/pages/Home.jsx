@@ -15,6 +15,8 @@ export default function Home() {
   const [mostrarForm, setMostrarForm] = useState(false);
   const [produtoSelecionado, setProdutoSelecionado] = useState(null);
   const [mostrarPedidos, setMostrarPedidos] = useState(false);
+  const [showFeedback, setShowFeedback] = useState(false);
+  const [mensagemFeedback, setMensagemFeedback] = useState('');
 
   const alterarQuantidade = (id, valor) => {
     setQuantidades({ ...quantidades, [id]: Math.max(1, valor) });
@@ -31,7 +33,7 @@ export default function Home() {
     const dadosEntrega = Object.fromEntries(formData);
 
     // 1. Pegar o token do localStorage
-    const token = localStorage.getItem('token'); 
+    const token = localStorage.getItem('token');
 
     const payload = {
       item: produtoSelecionado.nome,
@@ -46,16 +48,27 @@ export default function Home() {
           Authorization: `Bearer ${token}`
         }
       });
-      
-      alert(`✅ Pedido de ${payload.item} confirmado!`);
+
+      setMensagemFeedback(`✅ Pedido de ${payload.item} confirmado!`);
+      setShowFeedback(true);
       setMostrarForm(false);
+
+      setTimeout(() => {
+        setShowFeedback(false);
+      }, 2000);
     } catch (error) {
       console.error(error);
       if (error.response && error.response.status === 401) {
-        alert("Sua sessão expirou. Faça login novamente.");
+        setMensagemFeedback("Sessão expirada. Faça login novamente.");
       } else {
-        alert("Erro ao enviar pedido.");
+        setMensagemFeedback("Erro ao enviar pedido.");
       }
+
+      setShowFeedback(true);
+
+      setTimeout(() => {
+        setShowFeedback(false);
+      }, 2000);
     }
   }
 
@@ -86,6 +99,15 @@ export default function Home() {
         </div>
       )}
 
+      {/* 🔥 MODAL DE FEEDBACK (NOVO) */}
+      {showFeedback && (
+        <div className="modal-overlay">
+          <div className="modal-box">
+            <p>{mensagemFeedback}</p>
+          </div>
+        </div>
+      )}
+
       <header>
         <h1>🍌 <span>Banana</span> Store</h1>
         <p>Qualidade premium para o seu carrinho</p>
@@ -104,11 +126,16 @@ export default function Home() {
                 <input
                   type="number"
                   value={quantidades[banana.id]}
-                  onChange={(e) => alterarQuantidade(banana.id, parseInt(e.target.value))}
+                  onChange={(e) =>
+                    alterarQuantidade(banana.id, parseInt(e.target.value))
+                  }
                 />
               </div>
 
-              <button className="btn-pedido" onClick={() => prepararPedido(banana)}>
+              <button
+                className="btn-pedido"
+                onClick={() => prepararPedido(banana)}
+              >
                 🛒 Confirmar Pedido
               </button>
             </div>
