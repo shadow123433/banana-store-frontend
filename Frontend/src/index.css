@@ -114,3 +114,34 @@
     transform: scale(1);
   }
 }
+
+
+.senha-box {
+  position: relative;
+  width: 100%;
+}
+
+.senha-box input {
+  width: 100%;
+  padding-right: 50px;
+}
+
+.btn-mostrar-senha {
+  position: absolute;
+
+  top: 50%;
+  right: 12px;
+
+  transform: translateY(-50%);
+
+  background: transparent;
+  border: none;
+
+  cursor: pointer;
+
+  font-size: 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -8,6 +8,7 @@ export default function Login() {
   const [senha, setSenha] = useState('');
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
+  const [mostrarSenha, setMostrarSenha] = useState(false);
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -60,13 +61,24 @@ export default function Login() {
 
           <div className="input-group">
             <label>Senha:</label>
-            <input
-              type="password"
-              placeholder="Sua senha"
-              value={senha}
-              onChange={(e) => setSenha(e.target.value)}
-              required
-            />
+
+            <div className="senha-box">
+              <input
+                type={mostrarSenha ? 'text' : 'password'}
+                placeholder="Sua senha"
+                value={senha}
+                onChange={(e) => setSenha(e.target.value)}
+                required
+              />
+
+              <button
+                type="button"
+                className="btn-mostrar-senha"
+                onClick={() => setMostrarSenha(!mostrarSenha)}
+              >
+                {mostrarSenha ? '👁️' : '🙈'}  
+              </button>
+            </div>
           </div>
 
           <button type="submit" className="btn-login">
