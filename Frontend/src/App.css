@@ -165,3 +165,66 @@ header h1 span { color: var(--primary); }
   border-bottom: 4px solid var(--primary);
   text-align: center;
 }
+
+
+
+/* Ajuste no Container do Modal */
+.modal-content {
+  background: white;
+  border-radius: 24px;
+  position: relative;
+  width: 95%; /* Ocupa quase toda a largura no mobile */
+  max-width: 450px; /* Mas não passa disso no Desktop */
+  margin: auto;
+  overflow-y: auto;
+  box-sizing: border-box; /* Fundamental para o padding não "empurrar" a largura */
+}
+
+/* --- RESOLVENDO O RESPONSIVO --- */
+@media (max-width: 600px) {
+  .container {
+    padding: 10px;
+  }
+
+  .modal-overlay {
+    padding: 10px; /* Reduz a distância da borda da tela */
+  }
+
+  .modal-content {
+    width: 100%; /* No celular ele cola nas bordas */
+    border-radius: 15px;
+    padding: 10px; /* Padding interno menor para sobrar espaço pros inputs */
+  }
+
+  /* Faz os campos Bairro e Cidade ficarem um embaixo do outro */
+  .row {
+    display: flex;
+    flex-direction: column !important; 
+    gap: 10px !important;
+  }
+
+  /* Exceção: Mantém CEP e UF lado a lado (opcional, mas fica melhor) */
+  .row:has(input[name="cep"]) {
+    flex-direction: row !important;
+  }
+
+  /* Garante que nenhum input fique com largura fixa */
+  .form-body input, 
+  .form-body select {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box;
+  }
+
+  /* Botões grandes e fáceis de clicar */
+  .actions {
+    flex-direction: column-reverse;
+    gap: 10px;
+  }
+
+  .btn-primary, .btn-secondary {
+    width: 100% !important;
+    height: 55px; /* Altura ideal para o polegar */
+  }
+}

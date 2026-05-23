@@ -1,94 +1,95 @@
-/* Tira a largura exagerada */
 .form-card {
   width: 100%;
-  max-width: 420px; /* Tamanho ideal para não parecer "esparramado" */
-  margin: 0 auto;
-  padding: 10px;
-  background: #fff;
+  margin: 0;
+  padding: 0;
 }
 
 .form-card h2 {
-  font-family: 'serif'; /* Ou Playfair Display */
-  font-size: 1.8rem;
-  color: #2d3436;
-  margin-bottom: 25px;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #333;
   text-align: center;
+  margin-bottom: 25px;
 }
 
 .form-body {
   display: flex;
   flex-direction: column;
-  gap: 12px; /* Espaçamento menor entre linhas */
+  gap: 15px;
 }
 
+/* Campos em linha (CEP/UF) */
 .row {
   display: flex;
   gap: 12px;
+  width: 100%;
 }
 
-/* Proporções do Flex */
-.flex-1 { flex: 1; }
-.flex-2 { flex: 2; }
-
+/* Estilo dos Inputs (Igual ao seu print de sucesso) */
 .form-body input,
 .form-body select {
-  height: 48px;
-  padding: 0 15px;
+  width: 100% !important;
+  height: 55px;
+  background: #f8fafc;
   border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  font-size: 0.95rem;
-  background-color: #fff;
-  color: #4a5568;
+  border-radius: 15px;
+  padding: 0 15px;
+  font-size: 16px;
+  color: #444;
+  box-sizing: border-box;
   outline: none;
-  transition: all 0.2s;
 }
 
-.form-body input:focus {
-  border-color: #ff6b81;
-  box-shadow: 0 0 0 3px rgba(255, 107, 129, 0.1);
-}
-
-/* Botões pequenos e elegantes */
-.actions {
-  display: flex;
-  gap: 12px;
-  margin-top: 15px;
-}
-
-.btn-secondary {
-  flex: 1;
-  height: 48px;
-  background: #f1f5f9;
-  border: none;
-  border-radius: 12px;
-  color: #475569;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.btn-primary {
-  flex: 1.5; /* Confirmar ligeiramente maior */
-  height: 48px;
-  background: #ff6b81;
-  border: none;
-  border-radius: 12px;
-  color: white;
-  font-weight: 600;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(255, 107, 129, 0.2);
-}
-
-.btn-primary:hover {
-  background: #ff526a;
-  transform: translateY(-1px);
-}
-
-/* Ajuste Mobile */
-@media (max-width: 400px) {
-  .form-card {
-    padding: 5px;
-  }
+/* --- RESPONSIVIDADE TOTAL --- */
+@media (max-width: 600px) {
+  /* Força Bairro, Cidade e Endereço a ficarem sozinhos na linha */
   .row {
-    flex-direction: row; /* Mantém o CEP e UF na mesma linha mesmo no mobile */
+    flex-direction: column;
   }
+
+  /* Exceção: CEP e UF continuam lado a lado se couberem */
+  .row:has(input[name="cep"]) {
+    flex-direction: row !important;
+  }
+
+  /* Botões: Um em cima do outro */
+  .actions {
+    display: flex;
+    flex-direction: column !important;
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .btn-primary, .btn-secondary {
+    width: 100% !important;
+    height: 55px !important;
+    border-radius: 15px;
+    font-weight: 700;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-primary {
+    background: #ff6b81; /* Rosa do print */
+    color: white;
+    order: 1; /* Confirmar em cima */
+  }
+
+  .btn-secondary {
+    background: #f1f5f9;
+    color: #64748b;
+    order: 2; /* Cancelar embaixo */
+  }
+}
+
+/* Desktop: Botões lado a lado */
+@media (min-width: 601px) {
+  .actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+  }
+  .btn-primary { flex: 2; background: #ff6b81; color: white; border-radius: 15px; height: 50px; border: none; font-weight: bold; }
+  .btn-secondary { flex: 1; background: #f1f5f9; color: #64748b; border-radius: 15px; height: 50px; border: none; font-weight: bold; }
 }

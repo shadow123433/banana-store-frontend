@@ -5,7 +5,7 @@ const NavBar = ({ abrirPedidos }) => {
   return (
     <nav className="navbar">
       <div className="nav-container">
-        <h1 className="nav-logo">🍌 Meus Pedidos ➡️</h1>
+        <h1 className="nav-logo">Pedidos ➡️</h1>
         
         <button className="nav-btn-pedidos" onClick={abrirPedidos}>
           <span className="icon">🛍️</span>
