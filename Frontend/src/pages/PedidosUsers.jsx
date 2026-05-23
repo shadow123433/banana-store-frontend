@@ -202,12 +202,6 @@ const PedidosUsers = () => {
 
                 )}
 
-                <p className="telefone">
-
-                  📞 {p.telefone}
-
-                </p>
-
               </div>
 
               {p.status !== 'CANCELADO' && (

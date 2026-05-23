@@ -188,3 +188,11 @@
   cursor: not-allowed;
   box-shadow: none;
 }
+
+
+.sem-pedidos {
+  text-align: center;
+  padding: 40px 20px;
+  color: #555;
+  font-size: 1.2rem;
+}
