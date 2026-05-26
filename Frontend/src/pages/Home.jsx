@@ -73,7 +73,6 @@ export default function Home() {
 
     try {
       const formData = new FormData(event.target);
-
       const entrega = {
         cep: formData.get('cep')?.trim(),
         uf: formData.get('uf')?.trim(),
@@ -81,7 +80,7 @@ export default function Home() {
         bairro: formData.get('bairro')?.trim(),
         cidade: formData.get('cidade')?.trim(),
         numero: formData.get('numero')?.trim(),
-        complemento: formData.get('complemento')?.trim() || ''
+        complemento: formData.get('complemento')?.trim() || ""
       };
 
       const token = localStorage.getItem('token');

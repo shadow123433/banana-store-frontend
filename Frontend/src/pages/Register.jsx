@@ -9,6 +9,8 @@ export default function Register() {
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
   const [showModal, setShowModal] = useState(false);
+  const [mostrarSenha, setMostrarSenha] = useState(false);
+
   const navigate = useNavigate();
 
   async function handleSubmit(event) {
@@ -67,13 +69,23 @@ export default function Register() {
 
           <div className="input-group">
             <label>Senha:</label>
-            <input
-              type="password"
-              placeholder="Sua senha"
-              value={senha}
-              onChange={(e) => setSenha(e.target.value)}
-              required
-            />
+            <div className="senha-box">
+              <input
+                type={mostrarSenha ? 'text' : 'password'}
+                placeholder="Sua senha"
+                value={senha}
+                onChange={(e) => setSenha(e.target.value)}
+                required
+              />
+
+              <button
+                type="button"
+                className="btn-mostrar-senha"
+                onClick={() => setMostrarSenha(!mostrarSenha)}
+              >
+                {mostrarSenha ? '👁️' : '🙈'}
+              </button>
+            </div>
           </div>
 
           <button type="submit" className="btn-login">

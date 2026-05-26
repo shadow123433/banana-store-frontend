@@ -47,9 +47,9 @@ const PedidosUsers = () => {
         prev.map((p) =>
           p.id === id
             ? {
-                ...p,
-                status: 'CANCELADO'
-              }
+              ...p,
+              status: 'CANCELADO'
+            }
             : p
         )
       );
@@ -114,12 +114,7 @@ const PedidosUsers = () => {
               <div className="card-top">
 
                 <span className="pedido-id">
-
-                  #ID:
-                  {p.id
-                    .toString()
-                    .slice(-5)}
-
+                  #ID: {String(p.id).slice(-5)}
                 </span>
 
                 <div className="status-tag">
@@ -152,56 +147,23 @@ const PedidosUsers = () => {
               </div>
 
               <div className="entrega-box">
+                <h5>📍 Local de Entrega</h5>
 
-                <h5>
-                  📍 Local de Entrega
-                </h5>
+                <p><strong>CEP:</strong> {p.cep}</p>
 
                 <p>
-
-                  <strong>
-                    Para:
-                  </strong>
-
-                  {' '}
-                  {p.nome}
-
+                  {p.endereco}, nº {p.numeroCasa} - {p.bairro}
                 </p>
 
                 <p>
-
-                  {p.endereco},
-                  {' '}
-                  nº {p.numeroCasa}
-                  {' '}
-                  -
-                  {' '}
-                  {p.bairro}
-
-                </p>
-
-                <p>
-
-                  {p.cidade}
-                  {' '}
-                  -
-                  {' '}
-                  {p.uf}
-
+                  {p.cidade} - {p.uf}
                 </p>
 
                 {p.complemento && (
-
                   <p className="complemento">
-
-                    Obs:
-                    {' '}
-                    {p.complemento}
-
+                    <strong>Obs:</strong> {p.complemento}
                   </p>
-
                 )}
-
               </div>
 
               {p.status !== 'CANCELADO' && (

@@ -3,7 +3,7 @@ import axios from 'axios';
 // 🔗 instancia base da API
 const api = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
-  timeout: 10000 // evita requisição travada
+  timeout: 30000 // evita requisição travada
 });
 
 // 🔐 interceptor de requisição (envia token automaticamente)
