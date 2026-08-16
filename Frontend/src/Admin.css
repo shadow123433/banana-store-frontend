@@ -1,0 +1,708 @@
+/* =========================================================
+   PAINEL ADMINISTRATIVO
+   ========================================================= */
+
+.admin-container {
+  min-height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
+
+  padding: 40px;
+  background: #f5f7fb;
+
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: #1a1a1a;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.admin-header {
+  max-width: 1400px;
+  margin: 0 auto 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+}
+
+.admin-header h1 {
+  margin: 0;
+
+  font-size: 2rem;
+  font-weight: 800;
+
+  color: #171717;
+}
+
+.admin-header p {
+  margin: 8px 0 0;
+
+  color: #7a7a7a;
+  font-size: 0.95rem;
+}
+
+
+/* =========================================================
+   BOTÃO ATUALIZAR
+   ========================================================= */
+
+.btn-atualizar {
+  border: none;
+
+  background: #1a1a1a;
+  color: white;
+
+  padding: 13px 20px;
+
+  border-radius: 12px;
+
+  font-size: 0.9rem;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.btn-atualizar:hover {
+  background: #333;
+  transform: translateY(-2px);
+}
+
+.btn-atualizar:active {
+  transform: translateY(0);
+}
+
+
+/* =========================================================
+   RESUMO
+   ========================================================= */
+
+.admin-resumo {
+  max-width: 1400px;
+  margin: 0 auto 30px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 18px;
+}
+
+.resumo-card {
+  background: white;
+
+  border: 1px solid #e9edf3;
+
+  border-radius: 18px;
+
+  padding: 22px;
+
+  box-shadow:
+    0 5px 20px rgba(0, 0, 0, 0.04);
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+
+  transition: all 0.2s ease;
+}
+
+.resumo-card:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.07);
+}
+
+.resumo-card span {
+  color: #8a8f98;
+
+  font-size: 0.85rem;
+
+  font-weight: 600;
+}
+
+.resumo-card strong {
+  font-size: 2rem;
+
+  font-weight: 800;
+
+  color: #1a1a1a;
+}
+
+
+/* =========================================================
+   CORES DOS RESUMOS
+   ========================================================= */
+
+.resumo-card.pendente {
+  border-left: 4px solid #f5b700;
+}
+
+.resumo-card.entregue {
+  border-left: 4px solid #22c55e;
+}
+
+.resumo-card.cancelado {
+  border-left: 4px solid #ef4444;
+}
+
+
+/* =========================================================
+   LISTA DE PEDIDOS
+   ========================================================= */
+
+.admin-lista {
+  max-width: 1400px;
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 22px;
+}
+
+
+/* =========================================================
+   CARD DO PEDIDO
+   ========================================================= */
+
+.admin-pedido {
+  background: white;
+
+  border: 1px solid #e9edf3;
+
+  border-radius: 20px;
+
+  padding: 24px;
+
+  box-shadow:
+    0 8px 30px rgba(0, 0, 0, 0.05);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+
+  overflow: hidden;
+}
+
+.admin-pedido:hover {
+  transform: translateY(-4px);
+
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =========================================================
+   HEADER DO CARD
+   ========================================================= */
+
+.pedido-header {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 15px;
+
+  padding-bottom: 18px;
+
+  border-bottom: 1px solid #eef0f4;
+}
+
+.pedido-id {
+  font-size: 0.85rem;
+
+  color: #8b919b;
+
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   STATUS
+   ========================================================= */
+
+.pedido-status {
+  padding: 7px 12px;
+
+  border-radius: 999px;
+
+  font-size: 0.72rem;
+
+  font-weight: 800;
+
+  letter-spacing: 0.3px;
+
+  text-transform: uppercase;
+}
+
+.pedido-status.pendente {
+  background: #fff7d6;
+  color: #9a7300;
+}
+
+.pedido-status.entregue {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.pedido-status.cancelado {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+
+/* =========================================================
+   INFORMAÇÕES PRINCIPAIS
+   ========================================================= */
+
+.pedido-principal {
+  padding: 20px 0;
+}
+
+.pedido-principal h3 {
+  margin: 0 0 8px;
+
+  font-size: 1.25rem;
+
+  font-weight: 800;
+
+  color: #222;
+}
+
+.pedido-principal p {
+  margin: 0;
+
+  font-size: 0.9rem;
+
+  color: #6f7580;
+}
+
+.pedido-principal strong {
+  color: #222;
+}
+
+
+/* =========================================================
+   CLIENTE
+   ========================================================= */
+
+.pedido-cliente {
+  background: #f8fafc;
+
+  border-radius: 14px;
+
+  padding: 16px;
+
+  margin-bottom: 14px;
+}
+
+.pedido-cliente h4,
+.pedido-entrega h4 {
+  margin: 0 0 10px;
+
+  font-size: 0.8rem;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.5px;
+
+  color: #858b95;
+}
+
+.pedido-cliente p {
+  margin: 4px 0;
+
+  font-size: 0.9rem;
+
+  color: #555d68;
+
+  word-break: break-word;
+}
+
+.pedido-cliente strong {
+  color: #222;
+}
+
+
+/* =========================================================
+   ENDEREÇO
+   ========================================================= */
+
+.pedido-entrega {
+  background: #f8fafc;
+
+  border-radius: 14px;
+
+  padding: 16px;
+
+  margin-bottom: 16px;
+}
+
+.pedido-entrega p {
+  margin: 5px 0;
+
+  color: #555d68;
+
+  font-size: 0.88rem;
+
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   DATA
+   ========================================================= */
+
+.pedido-data {
+  padding-top: 4px;
+
+  margin-bottom: 18px;
+}
+
+.pedido-data span {
+  color: #9aa0a9;
+
+  font-size: 0.75rem;
+}
+
+
+/* =========================================================
+   BOTÃO ENTREGAR
+   ========================================================= */
+
+.btn-entregar {
+  width: 100%;
+
+  height: 48px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  background: #22c55e;
+
+  color: white;
+
+  font-size: 0.9rem;
+
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.btn-entregar:hover {
+  background: #16a34a;
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 7px 18px rgba(34, 197, 94, 0.25);
+}
+
+.btn-entregar:active {
+  transform: translateY(0);
+}
+
+
+/* =========================================================
+   ESTADO VAZIO
+   ========================================================= */
+
+.admin-vazio {
+  max-width: 700px;
+
+  margin: 60px auto;
+
+  background: white;
+
+  border: 1px solid #e9edf3;
+
+  border-radius: 20px;
+
+  padding: 50px 30px;
+
+  text-align: center;
+
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.04);
+}
+
+.admin-vazio h2 {
+  margin: 0 0 10px;
+
+  font-size: 1.4rem;
+
+  color: #222;
+}
+
+.admin-vazio p {
+  margin: 0;
+
+  color: #858b95;
+
+  font-size: 0.9rem;
+}
+
+
+/* =========================================================
+   CARREGANDO
+   ========================================================= */
+
+.admin-loading {
+  min-height: 100vh;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  background: #f5f7fb;
+
+  color: #555;
+
+  font-size: 1rem;
+
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   ERRO
+   ========================================================= */
+
+.admin-error {
+  max-width: 500px;
+
+  margin: 100px auto;
+
+  padding: 35px;
+
+  background: white;
+
+  border-radius: 20px;
+
+  text-align: center;
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.06);
+}
+
+.admin-error h2 {
+  margin-top: 0;
+
+  color: #dc2626;
+}
+
+.admin-error p {
+  color: #666;
+
+  margin-bottom: 20px;
+}
+
+.admin-error button {
+  border: none;
+
+  background: #1a1a1a;
+
+  color: white;
+
+  padding: 12px 20px;
+
+  border-radius: 10px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   RESPONSIVIDADE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .admin-container {
+    padding: 25px;
+  }
+
+  .admin-resumo {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .admin-lista {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+/* =========================================================
+   TABLET / CELULAR
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .admin-container {
+    padding: 15px;
+  }
+
+  .admin-header {
+    align-items: stretch;
+
+    flex-direction: column;
+
+    margin-bottom: 22px;
+  }
+
+  .admin-header h1 {
+    font-size: 1.55rem;
+  }
+
+  .admin-header p {
+    font-size: 0.85rem;
+  }
+
+  .btn-atualizar {
+    width: 100%;
+
+    height: 48px;
+  }
+
+
+  .admin-resumo {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 10px;
+
+    margin-bottom: 20px;
+  }
+
+  .resumo-card {
+    padding: 16px;
+
+    border-radius: 15px;
+  }
+
+  .resumo-card span {
+    font-size: 0.75rem;
+  }
+
+  .resumo-card strong {
+    font-size: 1.5rem;
+  }
+
+
+  .admin-lista {
+    grid-template-columns: 1fr;
+
+    gap: 15px;
+  }
+
+
+  .admin-pedido {
+    padding: 18px;
+
+    border-radius: 17px;
+  }
+
+
+  .pedido-header {
+    align-items: flex-start;
+  }
+
+  .pedido-status {
+    font-size: 0.65rem;
+
+    padding: 6px 9px;
+  }
+
+
+  .pedido-principal {
+    padding: 17px 0;
+  }
+
+  .pedido-principal h3 {
+    font-size: 1.1rem;
+  }
+
+
+  .pedido-cliente,
+  .pedido-entrega {
+    padding: 14px;
+
+    border-radius: 12px;
+  }
+
+
+  .pedido-entrega p {
+    font-size: 0.82rem;
+
+    word-break: break-word;
+  }
+
+
+  .btn-entregar {
+    height: 52px;
+
+    font-size: 0.88rem;
+  }
+
+}
+
+
+/* =========================================================
+   CELULARES PEQUENOS
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+  .admin-container {
+    padding: 10px;
+  }
+
+  .admin-header h1 {
+    font-size: 1.35rem;
+  }
+
+  .admin-resumo {
+    gap: 8px;
+  }
+
+  .resumo-card {
+    padding: 13px;
+  }
+
+  .resumo-card strong {
+    font-size: 1.3rem;
+  }
+
+  .admin-pedido {
+    padding: 15px;
+  }
+
+  .pedido-status {
+    font-size: 0.58rem;
+  }
+
+}
