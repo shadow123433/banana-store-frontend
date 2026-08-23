@@ -145,3 +145,6 @@ MIT
 ## 👨‍💻 Autor: Thiago Martins
 
 Desenvolvido como projeto de estudo com foco em arquitetura full stack, integração de serviços e deploy em produção.
+
+
+⭐ Se este projeto foi útil ou interessante, considere deixar uma estrela no repositório.
